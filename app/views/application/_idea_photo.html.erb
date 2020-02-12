@@ -1,0 +1,5 @@
+<% if photo_url.nil? %>
+  <img src="http://fpoimg.com/255x170" alt="A default image">
+<% else %>
+  <%= image_tag photo_url, alt: title %>
+<% end %>

@@ -1,0 +1,29 @@
+<main>
+  <div class="masthead">
+    <div class="content-wrapper">
+      <h1>Get inspired. Create your bucket list. Share.</h1>
+      <form method="get" action=" ">
+        <div class="input-inline">
+          <label class="input-group__label" for="banner-search-input">Inspire me</label>
+          <div class="input-row">
+            <input id="banner-search-input" class="input-row__field" type="text" name="search" placeholder="e.g. Swimming with dolphins">
+            <button class="btn btn--inline" type="submit">Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="content-wrapper">
+    <h2>Some ideas</h2>
+    <ul class="bare-list float-grid css-grid">
+      <% @ideas.each do |idea| %>
+      <li>
+        <%= render partial: "idea_card", locals: { title: idea.title, done_count: idea.done_count, photo_url: idea.photo_url, idea: idea } %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+  <div class="see-more">
+    <button class="btn" type="button" data-more="true">See more</button>
+  </div>
+</main>

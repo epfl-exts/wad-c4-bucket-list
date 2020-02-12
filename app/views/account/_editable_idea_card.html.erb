@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card__thumb">
+    <%= link_to(idea_path(idea)) do %>
+      <%= render partial: 'idea_photo', locals: { photo_url: idea.photo_url, title: idea.title } %>
+      <div class="card__intro">
+        <h4 class="card__title"><%= idea.title %></h4>
+        <span>75 have done this</span>
+      </div>
+    <% end %>
+  </div>
+  <div class="card__footer">
+    <button class="btn delta" type="submit">
+      <svg class="icon-delete" role="presentation">
+        <use href="/assets/icons/icons-defs.svg#delete"></use>
+      </svg>
+      Delete
+    </button>
+    <a class="btn delta" href="<%= edit_idea_path(idea) %>">
+      <svg class="icon-edit" role="presentation">
+        <use xlink:href="/assets/icons/icons-defs.svg#edit"></use>
+      </svg>
+      Edit
+    </a>
+  </div>
+</div>

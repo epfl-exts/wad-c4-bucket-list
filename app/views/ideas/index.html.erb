@@ -1,0 +1,23 @@
+<main>
+  <div class="content-wrapper">
+    <h1>Results for "<%= @search_term %>"</h1>
+  </div>
+  <% if(@ideas.any?) %>
+    <div class="content-wrapper">
+      <ul class="bare-list float-grid css-grid">
+        <% @ideas.each do |idea| %>
+        <li>
+          <%= render partial: "idea_card", locals: { title: idea.title, done_count: idea.done_count, photo_url: idea.photo_url, idea: idea } %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+    <div class="see-more">
+      <button class="btn" type="button" data-more="true">See more</button>
+    </div>
+  <% else %>
+    <div class="content-wrapper">
+      <h3>No ideas found!</h3>
+    </div>
+  <% end %>
+</main>

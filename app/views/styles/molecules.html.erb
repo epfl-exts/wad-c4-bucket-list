@@ -1,0 +1,148 @@
+<main class="content-wrapper">
+  <div>
+    <nav>
+      <ul class="sub-navigation">
+        <li><%= render partial: "subnav_item", locals: { url: "/styles/atoms", title: "Atoms", current: false } %></li>
+        <li><%= render partial: "subnav_item", locals: { url: "/styles/molecules", title: "Molecules", current: true } %></li>
+        <li><%= render partial: "subnav_item", locals: { url: "/styles/organisms", title: "Organisms", current: false } %></li>
+        <li><a href="templates.html">Templates</a></li>
+        <li><a href="#pages">Pages</a></li>
+      </ul>
+    </nav>
+    <h1>Molecules</h1>
+    <p>
+      Things start getting more interesting and tangible when we start combining atoms together. Molecules are groups of atoms bonded together and are the smallest fundamental units of a compound. These molecules take on their own properties and serve as the backbone of our design systems.
+    </p>
+    <p>
+      For example, a form label, input or button isn't too useful by itself, but combine them together as a form and now they can actually do something.
+    </p>
+    <p>
+      Building up to molecules from atoms encourages a “do one thing and do it well” mentality. While molecules can be complex, as a rule of thumb they are relatively simple combinations of atoms built for reuse.
+    </p>
+     <nav>
+      <ol class="ordered-navigation">
+        <li><a href="#card">Card</a></li>
+        <li><a href="#logo">Logo</a></li>
+        <li><a href="#search">Search</a></li>
+        <li><a href="#navigation">Navigation</a></li>
+        <li><a href="#cancel-confirm">Cancel / Confirm prompt</a></li>
+        <li><a href="#like">Like / Liked button</a></li>
+      </ol>
+    </nav>
+  </div>
+  <section class="sg-section" id="card">
+    <h2>01. Card</h2>
+    <%= render partial: "idea_card", locals: { title: "See the Northern lights", done_count: 33, photo_url: "http://fpoimg.com/255x170", idea: 1 } %>
+  </section>
+  <section class="sg-section" id="logo">
+    <h2>02. Logo</h2>
+    <h3>Default logo</h3>
+    <%= render partial: "logo" %>
+    <h3>Negative logo</h3>
+    <p>Used on dark background, like in the site footer.</p>
+    <%= render partial: "negative_logo" %>
+  </section>
+  <section class="sg-section" id="search">
+    <h2>03. Search</h2>
+    <%= render partial: "search_control" %>
+  </section>
+  <section class="sg-section" id="navigation">
+    <h2>04. Navigation</h2>
+    <h3>Primary navigation</h3>
+    <nav class="site-header__nav">
+      <ul class="main-navigation">
+        <li><a href="#nolink">Inspiration</a></li>
+        <li><a href="#nolink">Sign Up</a></li>
+        <li><a href="#nolink">Log In</a></li>
+      </ul>
+    </nav>
+    <h3>Secondary navigation</h3>
+    <nav>
+      <ul class="sub-navigation">
+        <li><a href="styleguide.html" class="current">Atoms</a></li>
+        <li><a href="molecules.html">Molecules</a></li>
+        <li><a href="organisms.html">Organisms</a></li>
+        <li><a href="#templates">Templates</a></li>
+        <li><a href="#pages">Pages</a></li>
+      </ul>
+    </nav>
+    <h3>Footer navigation</h3>
+    <div class="sg-dark-bg">
+      <nav class="footer__navigation">
+        <ul>
+          <li><a href="#nolink">About</a></li>
+          <li><a href="#nolink">Style Guide</a></li>
+          <li><a href="#nolink">Terms of Use</a></li>
+        </ul>
+      </nav>
+    </div>
+    <h3>Pagination</h3>
+    <div>
+      <ul class="pagination">
+        <li><a href="#nolink">First</a></li>
+        <li><a href="#nolink">Previous</a></li>
+        <li>...</li>
+        <li><a href="#nolink">5</a></li>
+        <li><a href="#nolink" class="current">6</a></li>
+        <li><a href="#nolink">7</a></li>
+        <li>...</li>
+        <li><a href="#nolink">Next</a></li>
+        <li><a href="#nolink">Last</a></li>
+      </ul>
+    </div>
+    <h3>Filters</h3>
+    <div>
+      <ul class="tags-list">
+        <li><a href="#tag1" data-filter="tag-1">Tag 1</a></li>
+        <li><a href="#tag2" data-filter="tag-2">Tag 2</a></li>
+        <li>
+          <a href="#tag3" class="selected" data-filter="tag-3">
+            Tag 3
+            <i class="remove-tag" data-remove-tag="tag-3">&times;</i>
+          </a>
+        </li>
+        <li><a href="#tag4" data-filter="tag-4">Tag 4</a></li>
+      </ul>
+    </div>
+    <h3>See more</h3>
+    <div>
+      <div class="see-more">
+        <button class="btn" type="button" data-more="true">See more</button>
+      </div>
+    </div>
+  </section>
+  <section class="sg-section" id="cancel-confirm">
+    <h2>05. Cancel or Confirm prompt</h2>
+    <div class="prompt">
+      <a class="prompt__cancel" href="#cancel">Cancel</a>
+      <button class="btn btn--primary prompt__confirm" type="button">Update profile</button>
+    </div>
+  </section>
+  <section class="sg-section" id="like">
+    <h2>06. Like or Liked button</h2>
+    <div class="card">
+      <div class="card__footer">
+        <div>
+          <button class="card__btn card__like delta" data-like="see-the-northern-lights">
+            <svg class="icon-heart" role="presentation">
+              <use xlink:href="/assets/icons/icons-defs.svg#heart"></use>
+            </svg>
+            Like
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__footer">
+        <div>
+          <button class="card__btn card__like delta" data-like="see-the-northern-lights">
+            <svg class="icon-heart icon-heart--liked" role="presentation">
+              <use xlink:href="/assets/icons/icons-defs.svg#heart"></use>
+            </svg>
+            Liked
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
