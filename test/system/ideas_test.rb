@@ -63,7 +63,7 @@ class IdeasTest < ApplicationSystemTestCase
   test "editing an idea" do
     idea = Idea.new title: "Make a birthday cake",
                     done_count: 33,
-                    user: User.new
+                    user: User.new(email: 'test@epfl.ch', password: 'password')
     idea.save!
                     
     visit(edit_idea_path(idea))
