@@ -4,6 +4,12 @@
       <h1 class="gamma">Log in</h1>
     </header>
     <main>
+      <% if(flash.any?) %>
+        <% flash.each do |name, message| %>
+          <div class="message <%= name %>"><%= message %></div>
+        <% end %>
+      <% end %>
+      <div class="message-container">
       <%= form_tag sessions_path do %>
         <div class="input-group">
           <%= label_tag :email, "Email", class: "input-group__label" %>
