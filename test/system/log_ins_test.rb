@@ -12,11 +12,13 @@ class LogInsTest < ApplicationSystemTestCase
   end
   
   test "log in does not create a User" do
-    user = User.new email: "exists@epfl.ch"
+    user = User.new email: "exists@epfl.ch",
+                    password: 'password'
     user.save!
 
-    visit new_user_path
+    visit new_session_path
     fill_in "Email", with: "exists@epfl.ch"
+    fill_in "Password", with: "password"
     click_on "Log in"
 
     assert_equal 1, User.all.count
