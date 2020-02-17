@@ -2,13 +2,11 @@ require "application_system_test_case"
 
 class IdeasTest < ApplicationSystemTestCase
   test "create new idea" do
-    user = User.new email: "exists@epfl.ch"
-    user.save!
-
     visit new_user_path
     fill_in "Email", with: "exists@epfl.ch"
+    fill_in "Password", with: "password"
+    click_on "Sign up"
 
-    click_on "Log in"
 		visit new_idea_path
     fill_in 'Title', with: 'See the Matterhorn'
     fill_in 'Done count', with: 10
@@ -19,12 +17,10 @@ class IdeasTest < ApplicationSystemTestCase
   end
 
   test "create two new ideas" do
-    user = User.new email: "exists@epfl.ch"
-    user.save!
-
     visit new_user_path
     fill_in "Email", with: "exists@epfl.ch"
-    click_on "Log in"
+    fill_in "Password", with: "password"
+    click_on "Sign up"
 
 		visit new_idea_path
     fill_in 'Title', with: 'See the Matterhorn'
@@ -45,12 +41,10 @@ class IdeasTest < ApplicationSystemTestCase
   end
 
   test "creating an idea with invalid title" do
-    user = User.new email: "exists@epfl.ch"
-    user.save!
-
     visit new_user_path
     fill_in "Email", with: "exists@epfl.ch"
-    click_on "Log in"
+    fill_in "Password", with: "password"
+    click_on "Sign up"
 
     visit new_idea_path
     fill_in 'Done count', with: 27
@@ -74,6 +68,7 @@ class IdeasTest < ApplicationSystemTestCase
     click_on "Update Idea"
     click_on "Make a Christmas cake"
 
+    sleep 0.2
     assert has_content?("Make a Christmas cake")
     assert has_content?("44 have done")
   end
@@ -81,7 +76,8 @@ class IdeasTest < ApplicationSystemTestCase
   test "editing an idea with validation errors" do
     idea = Idea.new title: "Make a birthday cake",
                     done_count: 33,
-                    user: User.new
+                    user: User.new(email: "test@epfl.ch",
+                    password: "password")
     idea.save!
                     
     visit(edit_idea_path(idea))
@@ -95,11 +91,13 @@ class IdeasTest < ApplicationSystemTestCase
 
   test "search" do
     idea_1 = Idea.new title: "Climb Mont Blanc",
-                      user: User.new
+                      user: User.new(email: "test@epfl.ch",
+                      password: "password")
     idea_1.save!
 
     idea_2 = Idea.new title: "Visit Niagara Falls",
-                      user: User.new
+                      user: User.new(email: "test@epfl.ch",
+                      password: "password")
     idea_2.save!
 
     visit(root_path)
@@ -113,7 +111,8 @@ class IdeasTest < ApplicationSystemTestCase
 
 	test "no matching results" do
     idea = Idea.new title: "Stand at the top of the Empire State building",
-                    user: User.new
+                    user: User.new(email: "test@epfl.ch",
+                    password: "password")
     idea.save!
 
     visit(root_path)
