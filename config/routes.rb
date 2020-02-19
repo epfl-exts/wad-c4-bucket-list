@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   resources :sessions, only: %i(new create destroy)
 
+  get 'account', to: 'account#edit'
+  patch 'account', to: 'account#update'
   get 'account/ideas'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
