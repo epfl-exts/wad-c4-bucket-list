@@ -3,16 +3,16 @@ require 'test_helper'
 class CommentTest < ActiveSupport::TestCase
   test "changing the associated Idea for a Comment" do
     idea = Idea.new title: "Learn to play guitar",
-                    user: User.new
+                    user: User.new(email: "test@epfl.ch")
     idea.save!
 
     comment = Comment.new body: "I'd like to do this!",
                           idea: idea,
-                          user: User.new
+                          user: User.new(email: "test2@epfl.ch")
     comment.save!
 
     second_idea = Idea.new title: "Learn to ski",
-                           user: User.new
+                           user: User.new(email: "test3@epfl.ch")
     second_idea.save!
 
     comment.idea = second_idea
@@ -23,11 +23,11 @@ class CommentTest < ActiveSupport::TestCase
 
   test "cascading save" do
     idea = Idea.new title: "Learn to play guitar",
-                    user: User.new
+                    user: User.new(email: "test@epfl.ch")
     idea.save!
 
     comment = Comment.new body: "I'd like to do this!",
-                          user: User.new
+                          user: User.new(email: "test2@epfl.ch")
     idea.comments << comment
     idea.save!
 
@@ -36,10 +36,10 @@ class CommentTest < ActiveSupport::TestCase
   
   test "comments are ordered correctly" do
     idea = Idea.new title: "Learn to play guitar",
-                    user: User.new
+                    user: User.new(email: "test@epfl.ch")
     idea.save!
 
-    user = User.new
+    user = User.new(email: "test2@epfl.ch")
 
     comment_1 = Comment.new body: "Great idea!", user: user
     comment_2 = Comment.new body: "I agree! I'd like to do this as well", user: user
