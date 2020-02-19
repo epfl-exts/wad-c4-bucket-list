@@ -2,7 +2,8 @@ class AccountController < ApplicationController
   before_action :ensure_authenticated
 
   def ideas
-    @ideas = Idea.all
+    user = User.find(session[:user_id])
+    @ideas = user.ideas
   end
 
   def ensure_authenticated
