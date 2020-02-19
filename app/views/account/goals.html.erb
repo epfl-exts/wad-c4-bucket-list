@@ -1,22 +1,27 @@
 <main>
   <div class="content-wrapper">
-    <h1>My Goals</h1>
-  </div>
-  <% if(@goals.any?) %>
-    <div class="content-wrapper">
-      <ul class="bare-list float-grid css-grid">
-        <% @goals.each do |goal| %>
-        <li>
-        </li>
-      <% end %>
+    <nav>
+      <ul class="sub-navigation">
+        <li><%= link_to "Account", account_path %></li>
+        <li><a href="#nolink" class="current">Goals</a></li>
+        <li><a href="#nolink">Ideas</a></li>
+        <li><a href="#nolink">Following</a></li>
       </ul>
-    </div>
-    <div class="see-more">
-      <button class="btn" type="button" data-more="true">See more</button>
-    </div>
-  <% else %>
-    <div class="content-wrapper">
-      <h3>You don't currently have any goals.</h3>
-    </div>
-  <% end %>
+    </nav>
+    <h1>My Goals</h1>
+    <% if(@goals.any?) %>
+        <ul class="bare-list float-grid css-grid">
+          <% @goals.each do |goal| %>
+          <li>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+      <div class="see-more">
+        <button class="btn" type="button" data-more="true">See more</button>
+      </div>
+    <% else %>
+        <h3>You don't currently have any goals.</h3>
+    <% end %>
+  </div>
 </main>
