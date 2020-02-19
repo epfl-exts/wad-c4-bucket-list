@@ -8,6 +8,9 @@ class AccountController < ApplicationController
     @ideas = user.ideas
   end
 
+  def edit
+  end
+
   def ensure_authenticated
     unless logged_in?
       redirect_to login_path
