@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :goals
   end
 
-  resources :sessions, only: %i(new create)
+  resources :sessions, only: %i(new create destroy)
 
   get 'account/ideas'
 
