@@ -16,13 +16,11 @@
             <%= link_to "<span><i>My</i> Bucket List</span>".html_safe, root_path %>
           </div>
           <%= render partial: 'search_form' %>
-          <nav class="site-header__nav">
-            <ul class="main-navigation">
-              <li><a href="#nolink">Inspiration</a></li>
-              <li><%= link_to "Account", account_ideas_path %></li>
-              <li><a href="#nolink">Log In</a></li>
-            </ul>
-          </nav>
+          <% if logged_in? %>
+            <%= render partial: "authenticated_user_header" %>
+          <% else %>
+            <%= render partial: "anonymous_user_header" %>
+          <% end %>
         </div>
       </div>
     </header>
