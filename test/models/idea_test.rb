@@ -19,10 +19,10 @@ class IdeaTest < ActiveSupport::TestCase
 
   test "the first empty Idea created is first in the list" do
     first_idea = Idea.new title: 'An interesting idea',
-                          user: User.new
+                          user: User.new(email: "test@epfl.ch")
     first_idea.save!
     second_idea = Idea.new title: 'Another interesting idea',
-                           user: User.new
+                           user: User.new(email: "test2@epfl.ch")
     second_idea.save!
     assert_equal(first_idea, Idea.all.first)
   end
@@ -31,12 +31,12 @@ class IdeaTest < ActiveSupport::TestCase
     first_idea = Idea.new title: "Cycle around Lac Léman",
                           photo_url: "http://mybucketlist.ch/an_image.jpg",
                           done_count: 5,
-                          user: User.new
+                          user: User.new(email: "test@epfl.ch")
     first_idea.save!
     second_idea = Idea.new title: "Do a tandem paraponte",
                            photo_url: "http://mybucketlist.ch/another_image.jpg",
                            done_count: 8,
-                           user: User.new
+                           user: User.new(email: "test2@epfl.ch")
     second_idea.save!
     
     assert_equal(first_idea, Idea.all.first)
@@ -44,7 +44,7 @@ class IdeaTest < ActiveSupport::TestCase
 
   test "updated_at is changed after updating the title" do
     idea = Idea.new title: "Visit Marrakech",
-                    user: User.new
+                    user: User.new(email: "test@epfl.ch")
     idea.save!
 
     first_updated_at = idea.updated_at
@@ -58,7 +58,7 @@ class IdeaTest < ActiveSupport::TestCase
 	test "updated_at is changed after updating the done_count" do
     idea = Idea.new title: 'An interesting idea',
                     done_count: 23,
-                    user: User.new
+                    user: User.new(email: "test@epfl.ch")
     idea.save!
 
     first_updated_at = idea.updated_at
@@ -72,7 +72,7 @@ class IdeaTest < ActiveSupport::TestCase
 	test "updated_at is changed after updating the photo_url" do
     idea = Idea.new title: 'An interesting idea',
                     photo_url: "https://mybucketlist.ch/an_image.png",
-                    user: User.new
+                    user: User.new(email: "test@epfl.ch")
     idea.save!
 
     first_updated_at = idea.updated_at
@@ -85,7 +85,7 @@ class IdeaTest < ActiveSupport::TestCase
 
   test "one matching result" do
     idea = Idea.new title: "Stand at the top of the Empire State building",
-                    user: User.new
+                    user: User.new(email: "test@epfl.ch")
     idea.save!
 
     results = Idea.search("the top")
@@ -95,7 +95,7 @@ class IdeaTest < ActiveSupport::TestCase
   test "only description matches" do
     idea = Idea.new title: "Surfing in Portugal",
                     description: "See what Atlantic coast waves are like!",
-                    user: User.new
+                    user: User.new(email: "test@epfl.ch")
     idea.save!
 
     results = Idea.search("coast")
@@ -105,12 +105,12 @@ class IdeaTest < ActiveSupport::TestCase
   test "both description and title match" do
     idea_1 = Idea.new title: "Overnight hike in Switzerland",
                       description: "Stay in a Swiss refuge in the mountains",
-                      user: User.new
+                      user: User.new(email: "test@epfl.ch")
     idea_1.save!
 
     idea_2 = Idea.new title: "Hike the mountains in Italy",
                       description: "See the Dolomites and Italian Alps",
-                      user: User.new
+                      user: User.new(email: "test2@epfl.ch")
     idea_2.save!
 
     results = Idea.search("mountains")
@@ -119,7 +119,7 @@ class IdeaTest < ActiveSupport::TestCase
 
   test "no matching results" do
     idea = Idea.new title: "Stand at the top of the Empire State building",
-                    user: User.new
+                    user: User.new(email: "test@epfl.ch")
     idea.save!
 
     results = Idea.search("snorkelling")
@@ -128,11 +128,11 @@ class IdeaTest < ActiveSupport::TestCase
 
 	test "two matching results" do
     idea_1 = Idea.new title: "Stand at the top of the Empire State building",
-                      user: User.new
+                      user: User.new(email: "test@epfl.ch")
     idea_1.save!
 
     idea_2 = Idea.new title: "Stand on the pyramids",
-                      user: User.new
+                      user: User.new(email: "test2@epfl.ch")
     idea_2.save!
 
     results = Idea.search("Stand")
@@ -146,11 +146,11 @@ class IdeaTest < ActiveSupport::TestCase
 
   test "most_recent with two records" do
     idea_1 = Idea.new title: "Stand at the top of the Empire State building",
-                      user: User.new
+                      user: User.new(email: "test@epfl.ch")
     idea_1.save!
 
     idea_2 = Idea.new title: "Stand on the pyramids",
-                      user: User.new
+                      user: User.new(email: "test2@epfl.ch")
     idea_2.save!
 
     results = Idea.most_recent
@@ -158,7 +158,7 @@ class IdeaTest < ActiveSupport::TestCase
   end
 
   test "most_recent with six records" do
-    user = User.new
+    user = User.new(email: "test@epfl.ch")
 
     1.upto(6) do |i|
       idea = Idea.new title: "Idea number #{i}",
