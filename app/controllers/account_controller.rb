@@ -8,6 +8,10 @@ class AccountController < ApplicationController
     @ideas = user.ideas
   end
 
+  def goals
+    @goals = current_user.goals
+  end
+
   def edit
   end
 
