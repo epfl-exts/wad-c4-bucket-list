@@ -15,11 +15,13 @@
       </svg>
       Remove
     </button>
-    <%= link_to edit_idea_path(goal), class: "btn delta" do %>
-      <svg class="icon-edit" role="presentation">
-        <use href="/assets/icons/icons-defs.svg#edit"></use>
-      </svg>
-      Edit
+    <% if can_edit?(goal) %>
+      <%= link_to edit_idea_path(goal), class: "btn delta" do %>
+        <svg class="icon-edit" role="presentation">
+          <use href="/assets/icons/icons-defs.svg#edit"></use>
+        </svg>
+        Edit
+      <% end %>
     <% end %>
   </div>
 </div>
