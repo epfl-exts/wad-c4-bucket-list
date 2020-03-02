@@ -18,12 +18,6 @@ class AccountController < ApplicationController
     redirect_to account_path
   end
 
-  def ensure_authenticated
-    unless logged_in?
-      redirect_to login_path
-    end
-  end
-  
   def user_params
     params.require(:user).permit(:email, :name, :avatar_url)
   end
