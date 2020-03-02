@@ -1,5 +1,5 @@
 class IdeasController < ApplicationController
-  before_action :ensure_authenticated, only: [:edit, :update]
+  before_action :ensure_authenticated, only: [:new, :create, :edit, :update]
   before_action :load_idea, only: [:edit, :update]
   before_action :ensure_owner, only: [:edit, :update]
 
