@@ -1,5 +1,6 @@
 class IdeasController < ApplicationController
   before_action :ensure_authenticated, only: [:edit, :update]
+  before_action :load_idea, only: [:edit, :update]
   before_action :ensure_owner, only: [:edit, :update]
 
   def index
@@ -50,8 +51,6 @@ class IdeasController < ApplicationController
   private
 
   def ensure_owner
-    @idea = Idea.find(params[:id])
-
     if(@idea.user == current_user)
       return
     end
@@ -61,5 +60,9 @@ class IdeasController < ApplicationController
 
   def ideas_resource_params
     params.require(:idea).permit(:title, :done_count, :photo_url, :description)
+  end
+
+  def load_idea
+    @idea = Idea.find(params[:id])
   end
 end
