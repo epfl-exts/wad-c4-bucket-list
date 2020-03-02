@@ -1,4 +1,6 @@
 class IdeasController < ApplicationController
+  before_action :ensure_authenticated, only: :edit
+
   def index
     @search_term = params[:q]
     @ideas = Idea.search(@search_term)
