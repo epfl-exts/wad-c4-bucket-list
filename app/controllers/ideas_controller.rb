@@ -50,6 +50,16 @@ class IdeasController < ApplicationController
 
   private
 
+  def ensure_owner
+    idea = Idea.find(params[:id])
+
+    if(idea.user == current_user)
+      return
+    end
+
+    redirect_to(account_path)
+  end
+
   def ideas_resource_params
     params.require(:idea).permit(:title, :done_count, :photo_url, :description)
   end
