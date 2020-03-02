@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
-  before_action :ensure_authenticated, only: :edit
-  before_action :ensure_owner, only: :edit
+  before_action :ensure_authenticated, only: [:edit, :update]
+  before_action :ensure_owner, only: [:edit, :update]
 
   def index
     @search_term = params[:q]
