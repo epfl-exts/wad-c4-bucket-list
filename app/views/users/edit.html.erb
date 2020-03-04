@@ -1,6 +1,11 @@
 <main>
   <div class="content-wrapper">
     <h1>User details</h1>
+    <% if(@user.errors.any?) %>
+      <div class="alert alert--wide">
+        <%= @user.errors.full_messages.join('<br />') %>
+      </div>
+    <% end %>
     <%= form_for @user, html: { class: "form--inpage" } do |form| %>
       <div class="input-group input-group--horizontal">
         <%= form.label :email, class: "input-group__label" %>
