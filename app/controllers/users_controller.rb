@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :ensure_admin, only: [:edit, :update]
+
   def new
     @user = User.new
   end
@@ -21,6 +23,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def ensure_admin
+    redirect_to account_path unless current_user.role == "admin"
+  end
 
   def user_params
     params.require(:user).permit(:email, :password)
