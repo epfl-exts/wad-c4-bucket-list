@@ -1,0 +1,27 @@
+<main>
+  <div class="content-wrapper">
+    <h1>User details</h1>
+    <%= form_for @user, html: { class: "form--inpage" } do |form| %>
+      <div class="input-group input-group--horizontal">
+        <%= form.label :email, class: "input-group__label" %>
+        <%= form.text_field :email, class: "input-group__field", placeholder: "e.g. me@epfl.ch" %>
+      </div>
+      <div class="input-group input-group--horizontal">
+        <%= form.label :name, class: "input-group__label" %>
+        <%= form.text_field :name, class: "input-group__field", placeholder: "e.g. Diana Prince" %>
+      </div>
+      <div class="input-group input-group--horizontal">
+        <%= form.label :role, class: "input-group__label" %>
+        <%= form.select :role, %w(admin registered), class: "input-group__field" %>
+      </div>
+      <div class="input-group input-group--horizontal">
+        <%= form.label :avatar_url, class: "input-group__label" %>
+        <%= form.text_field :avatar_url, class: "input-group__field" %>
+      </div>
+      <div class="prompt">
+        <%= link_to "Cancel", account_path, class: "prompt__cancel" %>
+        <%= form.submit "Update user", class: "btn btn--primary prompt__confirm" %>
+      </div>
+      <% end %>
+  </div>
+</main>
