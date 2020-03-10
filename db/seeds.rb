@@ -18,3 +18,7 @@ krist = User.create!(name: "Krist", email: "krist@epfl.ch", password: "password"
   Idea.create!(title: "Great idea #{i} from #{dave.name}", user: dave)
   Idea.create!(title: "Great idea #{i} from #{krist.name}", user: krist)
 end
+
+admin.goals << kurt.ideas.first
+admin.goals << dave.ideas.first
+admin.goals << krist.ideas.first
