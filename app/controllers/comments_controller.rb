@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   def create
     user = current_user
     idea = Idea.find(params[:idea_id])
-    @comment = Comment.new @comment_params
+    @comment = Comment.new comment_params
     @comment.idea = idea
     @comment.user = user
     @comment.save
