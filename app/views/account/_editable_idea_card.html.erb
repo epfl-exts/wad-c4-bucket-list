@@ -9,12 +9,12 @@
     <% end %>
   </div>
   <div class="card__footer">
-    <button class="btn delta" type="submit">
+    <%= link_to(idea_path(idea), class: "btn delta", method: :delete, remote: true) do %>
       <svg class="icon-delete" role="presentation">
         <use href="/assets/icons/icons-defs.svg#delete"></use>
       </svg>
       Delete
-    </button>
+    <% end %>
     <a class="btn delta" href="<%= edit_idea_path(idea) %>">
       <svg class="icon-edit" role="presentation">
         <use xlink:href="/assets/icons/icons-defs.svg#edit"></use>
