@@ -4,7 +4,7 @@ commentTime.appendChild(document.createTextNode('Today'));
 
 var commentHeader = document.createElement('h3');
 commentHeader.className = 'comment__title';
-commentHeader.appendChild(document.createTextNode('Tom Jenkinson '));
+commentHeader.appendChild(document.createTextNode('<%= @comment.user.name %>'));
 commentHeader.appendChild(commentTime);
 
 var commentParagraph = document.createElement('p');
