@@ -8,7 +8,7 @@ commentHeader.appendChild(document.createTextNode('Tom Jenkinson '));
 commentHeader.appendChild(commentTime);
 
 var commentParagraph = document.createElement('p');
-commentParagraph.appendChild(document.createTextNode('This is a great idea!!'));
+commentParagraph.appendChild(document.createTextNode('<%= @comment.body %>'));
 
 var commentBody = document.createElement('div');
 commentBody.className = 'comment__body';
