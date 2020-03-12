@@ -16,7 +16,7 @@
       Like
     </button>
     <% if(logged_in?) %>
-      <%= form_tag(user_goals_path(current_user)) do %>
+      <%= form_tag(user_goals_path(current_user), remote: true, id: "goal-#{idea.id}") do %>
         <%= hidden_field_tag("idea_id", idea.id) %>
         <%= button_tag(class: "card__btn card__add delta", type: :submit, disabled: @disable_add_goal) do %>
           <svg class="icon-pluss" role="presentation">
