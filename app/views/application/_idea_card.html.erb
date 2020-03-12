@@ -15,11 +15,16 @@
       </svg>
       Like
     </button>
-    <button class="card__btn card__add delta" data-addGoal="see-the-northern-lights">
-      <svg class="icon-pluss" role="presentation">
-        <use xlink:href="/assets/icons/icons-defs.svg#pluss"></use>
-      </svg>
-      Add Goal
-    </button>
+    <% if(logged_in?) %>
+      <%= form_tag(user_goals_path(current_user)) do %>
+        <%= hidden_field_tag("idea_id", idea.id) %>
+        <%= button_tag(class: "card__btn card__add delta", type: :submit, disabled: @disable_add_goal) do %>
+          <svg class="icon-pluss" role="presentation">
+            <use xlink:href="/assets/icons/icons-defs.svg#pluss"></use>
+          </svg>
+          Add Goal
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
 </div>
