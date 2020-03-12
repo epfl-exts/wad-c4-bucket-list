@@ -14,11 +14,10 @@ class IdeasController < ApplicationController
   def show
     @idea = Idea.find(params[:id])
     @comment = Comment.new
-    @display_add_comment = session[:user_id].present?
+    @display_add_comment = logged_in?
 
-    if(session[:user_id])
-      @user = User.find(session[:user_id])
-      @disable_add_goal = @user.goals.exists?(@idea.id)
+    if(logged_in?)
+      @disable_add_goal = current_user.goals.exists?(@idea.id)
     else
       @user = nil
     end
